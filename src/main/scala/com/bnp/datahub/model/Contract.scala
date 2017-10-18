@@ -1,17 +1,8 @@
 package com.bnp.datahub.model
 
 class Contract(
-                    ID_RP_CUSTOMER: String,
-                    CNTR_NUM: String,
-                    LB_CNTR_TYP: String,
-                    DT_EFFCT: String
+                    id_rp_customer: String,
+                    cntr_num: String,
+                    lb_cntr_typ: String,
+                    dt_effct: String
                    )
-
-/*object Contract{
-  def apply(
-             ID_RP_CUSTOMER: String,
-             CNTR_NUM: String,
-             LB_CNTR_TYP: String,
-             DT_EFFCT: String
-           ): Contract = new Contract(ID_RP_CUSTOMER, CNTR_NUM, LB_CNTR_TYP, DT_EFFCT)
-}*/

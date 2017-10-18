@@ -1,20 +1,9 @@
 package com.bnp.datahub.model
 
 case class Account(
-              ID_RP_CUSTOMER: String,
-              ACC_NUM: String,
-              LB_ACC_TYP: String,
-              LB_CURRENCY: String,
-              BALANCE: Float = 0
+              id_rp_customer: String,
+              acc_num: String,
+              lb_acc_typ: String,
+              lb_currency: String,
+              balance: Float = 0
             )
-
-
-/*object Account{
-  def apply(
-             ID_RP_CUSTOMER: String,
-             ACC_NUM: String,
-             LB_ACC_TYP: String,
-             LB_CURRENCY: String,
-             BALANCE: Float = 0
-           ): Account = new Account(ID_RP_CUSTOMER, ACC_NUM, LB_ACC_TYP, LB_CURRENCY, BALANCE)
-}*/

@@ -6,8 +6,8 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <scala.version>2.11.11</scala.version>
-    <scala.version.short>2.11</scala.version.short>
+    <scala.version>2.10.6</scala.version>
+    <scala.version.short>2.10</scala.version.short>
     <spark.version>2.2.0</spark.version>
     <com.datastax.spark.version>2.0.5</com.datastax.spark.version>
   </properties>
