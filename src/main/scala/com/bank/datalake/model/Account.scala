@@ -1,4 +1,4 @@
-package com.bnp.datahub.model
+package com.bank.datalake.model
 
 case class Account(
               id_rp_customer: String,

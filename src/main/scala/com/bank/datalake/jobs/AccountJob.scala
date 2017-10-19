@@ -1,6 +1,6 @@
-package com.bnp.datahub.jobs
+package com.bank.datalake.jobs
 
-import com.bnp.datahub.model._
+import com.bank.datalake.model._
 import com.datastax.spark.connector._
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions.{collect_list, struct}

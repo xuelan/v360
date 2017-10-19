@@ -1,4 +1,4 @@
-package com.bnp.datahub.model
+package com.bank.datalake.model
 
 import java.util.List
 

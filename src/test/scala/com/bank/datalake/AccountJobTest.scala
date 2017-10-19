@@ -1,7 +1,7 @@
-package com.bnp.datahub
+package com.bank.datalake
 
+import org.junit.Assert._
 import org.junit._
-import Assert._
 
 @Test
 class AccountJobTest {

@@ -1,4 +1,4 @@
-package com.bnp.datahub.model
+package com.bank.datalake.model
 
 class Contract(
                     id_rp_customer: String,

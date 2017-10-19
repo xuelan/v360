@@ -1,4 +1,6 @@
-import com.bnp.datahub.jobs.AccountJob
+package com.bank.datalake.apps
+
+import com.bank.datalake.jobs.AccountJob
 import org.apache.spark.sql.SparkSession
 
 object AccountApp {
