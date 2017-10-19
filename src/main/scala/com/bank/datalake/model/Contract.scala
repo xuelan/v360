@@ -1,6 +1,6 @@
 package com.bank.datalake.model
 
-class Contract(
+case class Contract(
                     id_rp_customer: String,
                     cntr_num: String,
                     lb_cntr_typ: String,

@@ -14,7 +14,6 @@ drop keyspace v360;
 create keyspace v360 WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 };
 
 
-
 //////////////////////////////////////// UDT (USER DEFINED TYPE) ////////////////////////////////////////////
 
 drop type v360.card;
@@ -49,7 +48,6 @@ create type v360.contract (
 );
 
 
-
 ////////////////////////////////////////  TABLE ////////////////////////////////////////////
 
 
@@ -80,6 +78,9 @@ create table v360.tb_customer(
 );
 
 
+
+//tb_transaction..... TODO with bucket(slice of month...)
+// ((id_rp_customer, bucket), id_trnsc)  + index of rs_comm
 
 
 /////////////////////////////////////////   INDEX   ///////////////////////////////////////////

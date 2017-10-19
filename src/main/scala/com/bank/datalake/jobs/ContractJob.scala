@@ -4,8 +4,10 @@ import com.bank.datalake.model._
 import com.datastax.spark.connector._
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions.{collect_list, struct}
+import scala.collection.JavaConverters._
 
-object AccountJob {
+
+object ContractJob {
   def start(sparkSession: SparkSession, filePath: String):Unit = {
 
     val sqlContext = sparkSession.sqlContext
@@ -18,17 +20,17 @@ object AccountJob {
                               .load(filePath)
                               .groupBy("id_rp_customer")
                               .agg(collect_list(
-                                struct("id_rp_customer", "id_rp_customer","acc_num","lb_acc_typ","lb_currency","balance")
+                                struct("id_rp_customer", "id_rp_customer", "cntr_num", "lb_cntr_typ", "dt_effct")
                               ).as("Set"))
 
-    val listCustomer:List[Customer] = dataSet.rdd.collect().toList.map(
+    val listCustomer: List[Customer] = dataSet.rdd.collect().toList.map(
       (row: Row) => {
-          val listAccounts:List[Account] = row.getAs[Seq[Row]](1).toList.map(
+          val listContracts: List[Contract] = row.getAs[Seq[Row]](1).toList.map(
             row2 => {
-              new Account(row2.get(1).toString,row2.get(2).toString,row2.get(3).toString,row2.get(4).toString,row2.get(5).toString.toFloat)
+              new Contract(row2.get(1).toString,row2.get(2).toString,row2.get(3).toString,row2.get(4).toString)
             }
           )
-            Customer.applyAccount(row.get(0).toString, listAccounts)
+          Customer.applyContract(row.get(0).toString, listContracts)
         }
     )
 
@@ -38,7 +40,7 @@ object AccountJob {
 
     collection.saveToCassandra("v360", "tb_customer", SomeColumns(
       "id_rp_customer",
-      "set_acc"
+      "set_cntr"
     ))
 
     sparkSession.stop()

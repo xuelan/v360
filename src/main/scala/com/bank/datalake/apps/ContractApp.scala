@@ -1,21 +1,21 @@
 package com.bank.datalake.apps
 
-import com.bank.datalake.jobs.CustomerJob
+import com.bank.datalake.jobs.ContractJob
 import org.apache.spark.sql.SparkSession
 
-object CustomerApp {
+object ContractApp {
 
   def main(args: Array[String]): Unit = {
 
     val sparkSession = SparkSession.builder
                                   .master("local")
-                                  .appName("CustomerApp")
+                                  .appName("ContractApp")
                                   .config("spark.cassandra.connection.host", "localhost")
                                   .config("spark.serializer","org.apache.spark.serializer.KryoSerializer")
                                   .getOrCreate()
 
-    val source = getClass.getResource("/dataExample/Customer.csv").toString
+    val source = getClass.getResource("/dataExample/Contract.csv").toString
 
-    CustomerJob.start(sparkSession, source)
+    ContractJob.start(sparkSession, source)
   }
 }

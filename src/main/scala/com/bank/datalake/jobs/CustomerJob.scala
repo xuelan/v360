@@ -20,7 +20,7 @@ object CustomerJob {
     dataFrame.show(20, false)
 
     val seq = dataFrame.rdd.map(
-                    row => new Customer(
+                    row => Customer.applyCustomer(
                                 Option(row.get(0)).getOrElse("null").toString,
                                 Option(row.get(1)).getOrElse("null").toString,
                                 Option(row.get(2)).getOrElse("null").toString,
