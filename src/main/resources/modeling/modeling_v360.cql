@@ -187,13 +187,13 @@ insert into v360.tb_customer (
   {
     {id_rp_customer: '1',
     acc_num: 'FR76 3000 4022 4400 0055 1234 556',
-    lb_acc_typ: 'Compte à terme',
+    lb_acc_typ: 'Account A',
     lb_currency: 'EUR',
     balance: 62919.4},
 
     {id_rp_customer: '1',
     acc_num: 'FR76 3000 4022 4400 0055 1234 557',
-    lb_acc_typ: 'Compte à terme',
+    lb_acc_typ: 'Account A',
     lb_currency: 'EUR',
     balance: 52919.4}
   },
@@ -201,7 +201,7 @@ insert into v360.tb_customer (
   {
     {id_rp_customer: '1',
     cntr_num : '27594',
-    lb_cntr_typ : 'ASSURANCE VIE',
+    lb_cntr_typ : 'ASSURANCE LIFE',
     dt_effct : '2007-09-04'}
   }
 );
