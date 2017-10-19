@@ -15,8 +15,8 @@ object CustomerApp {
       .config("spark.serializer","org.apache.spark.serializer.KryoSerializer")
       .getOrCreate()
 
-    val filePath = "/Users/xsun/Downloads/v360/dataCsv/Customer.csv"
+    val source = getClass.getResource("/dataExample/Customer.csv").toString
 
-    CustomerJob.start(sparkSession, filePath)
+    CustomerJob.start(sparkSession, source)
   }
 }

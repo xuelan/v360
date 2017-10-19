@@ -14,8 +14,8 @@ object AccountApp {
                                   .config("spark.serializer","org.apache.spark.serializer.KryoSerializer")
                                   .getOrCreate()
 
-    val filePath = "/Users/xsun/Downloads/v360/dataCsv/Account.csv"
+    val source = getClass.getResource("/dataExample/Account.csv").toString
 
-    AccountJob.start(sparkSession, filePath)
+    AccountJob.start(sparkSession, source)
   }
 }

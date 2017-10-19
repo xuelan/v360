@@ -1,0 +1,4 @@
+id_rp_customer;id_tlm;lb_civ;first_nm;last_nm;used_nm;lb_dt_birth;lb_birth_place;lb_email;lb_profsn;lb_ntnlty;adrs_num;lb_adrs_1;lb_adrs_2;cp;lb_city;lb_cntry
+1;0000008260;Mr;vinay;HUET;;1978-03-15;CARENTAN LES MARAIS;vinay.HUET@gmail.com;Assistant;France;2;rue du pivert;;77360;CARENTAN LES MARAIS;France
+2;9615483771;Mr;nicolas;eric;;1980-07-01;Paris;nicolas.eric@gmail.com;Docteur;France;3;rue sophie pasquier;;75007;Paris;France
+3;0000008267;Mr;brandy;DUBOIS;;1966-07-04;EPINAY SOUS SENART;brandy.DUBOIS@gmail.com;Bibliothécaire;France;32;rue du pivert;;91860;EPINAY SOUS SENART;France

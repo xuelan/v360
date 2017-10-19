@@ -6,7 +6,6 @@
 // 2. tb_transaction
 
 
-
 ////////////////////////////////////////  Keyspace ////////////////////////////////////////////
 
 drop keyspace v360;
@@ -21,32 +20,32 @@ create keyspace v360 WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', '
 drop type v360.card;
 
 create type v360.card (
-id_rp_customer text,
-card_num text,
-lb_card_typ text,
-lb_deb_typ text,
-dt_exp text,
-acc_num_attch text,
-card_state text
+  id_rp_customer text,
+  card_num text,
+  lb_card_typ text,
+  lb_deb_typ text,
+  dt_exp text,
+  acc_num_attch text,
+  card_state text
 );
 
 drop type v360.account;
 
 create type v360.account (
-id_rp_customer text,
-acc_num text,
-lb_acc_typ text,
-lb_currency text,
-balance float
+  id_rp_customer text,
+  acc_num text,
+  lb_acc_typ text,
+  lb_currency text,
+  balance float
 );
 
 drop type v360.contract;
 
 create type v360.contract (
-id_rp_customer text,
-cntr_num text,
-lb_cntr_typ text,
-dt_effct timestamp
+  id_rp_customer text,
+  cntr_num text,
+  lb_cntr_typ text,
+  dt_effct timestamp
 );
 
 
@@ -57,27 +56,27 @@ dt_effct timestamp
 drop table v360.tb_customer;
 
 create table v360.tb_customer(
-id_rp_customer text,
-id_tlm text,
-lb_civ text,
-first_nm text,
-last_nm text,
-used_nm text,
-lb_dt_birth text,
-lb_birth_place text,
-lb_email text,
-lb_profsn text,
-lb_ntnlty text,
-adrs_num text,
-lb_adrs_1 text,
-lb_adrs_2 text,
-cp text,
-lb_city text,
-lb_cntry text,
-set_card frozen<set<card>>,
-set_acc frozen<set<account>>,
-set_cntr frozen<set<contract>>,
-primary key (id_rp_customer)
+  id_rp_customer text,
+  id_tlm text,
+  lb_civ text,
+  first_nm text,
+  last_nm text,
+  used_nm text,
+  lb_dt_birth text,
+  lb_birth_place text,
+  lb_email text,
+  lb_profsn text,
+  lb_ntnlty text,
+  adrs_num text,
+  lb_adrs_1 text,
+  lb_adrs_2 text,
+  cp text,
+  lb_city text,
+  lb_cntry text,
+  set_card frozen<set<card>>,
+  set_acc frozen<set<account>>,
+  set_cntr frozen<set<contract>>,
+  primary key (id_rp_customer)
 );
 
 
@@ -89,14 +88,14 @@ primary key (id_rp_customer)
 DROP SEARCH INDEX ON v360.tb_customer;
 
 create search index on v360.tb_customer
-with columns
-first_nm,
-last_nm,
-lb_email,
-lb_profsn,
-set_card,
-set_acc,
-set_cntr
+  with columns
+    first_nm,
+    last_nm,
+    lb_email,
+    lb_profsn,
+    set_card,
+    set_acc,
+    set_cntr
 ;
 
 //Normal fields
@@ -105,7 +104,7 @@ ALTER SEARCH INDEX SCHEMA ON v360.tb_customer SET field[@name='last_nm']@type = 
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer SET field[@name='lb_profsn']@type = 'TextField';
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer SET field[@name='lb_email']@type = 'StrField';
 
-//customer_card
+//Set_card
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer drop field[@name='set_card.id_rp_customer'];
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer drop field[@name='set_card.lb_card_typ'];
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer drop field[@name='set_card.lb_deb_typ'];
@@ -127,8 +126,8 @@ ALTER SEARCH INDEX SCHEMA ON v360.tb_customer drop field[@name='set_cntr.dt_effc
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer set field[@name='set_cntr.lb_cntr_typ']@type = 'TextField';
 ALTER SEARCH INDEX SCHEMA ON v360.tb_customer set field[@name='set_cntr.cntr_num']@type = 'StrField';
 
-RELOAD SEARCH INDEX ON v360.tb_customer;
 
+RELOAD SEARCH INDEX ON v360.tb_customer;
 REBUILD SEARCH INDEX ON v360.tb_customer;
 
 
@@ -136,75 +135,74 @@ REBUILD SEARCH INDEX ON v360.tb_customer;
 
 
 insert into v360.tb_customer (
-id_rp_customer,
-id_tlm,
-lb_civ,
-first_nm,
-last_nm,
-used_nm,
-lb_dt_birth,
-lb_birth_place,
-lb_email,
-lb_profsn,
-lb_ntnlty,
-adrs_num,
-lb_adrs_1,
-lb_adrs_2,
-cp,
-lb_city,
-lb_cntry,
-set_card,
-set_acc,
-set_cntr
+  id_rp_customer,
+  id_tlm,
+  lb_civ,
+  first_nm,
+  last_nm,
+  used_nm,
+  lb_dt_birth,
+  lb_birth_place,
+  lb_email,
+  lb_profsn,
+  lb_ntnlty,
+  adrs_num,
+  lb_adrs_1,
+  lb_adrs_2,
+  cp,
+  lb_city,
+  lb_cntry,
+  set_card,
+  set_acc,
+  set_cntr
 ) values (
-'1',
-'0000008260',
-'Mr',
-'vinay',
-'HUET' ,
-'',
-'1978-03-15',
-'CARENTAN LES MARAIS',
-'vinay.HUET@gmail.com',
-'Assistant',
-'France',
-'2',
-'rue du pivert',
-'',
-'77360',
-'CARENTAN LES MARAIS',
-'France',
+  '1',
+  '0000008260',
+  'Mr',
+  'vinay',
+  'HUET' ,
+  '',
+  '1978-03-15',
+  'CARENTAN LES MARAIS',
+  'vinay.HUET@gmail.com',
+  'Assistant',
+  'France',
+  '2',
+  'rue du pivert',
+  '',
+  '77360',
+  'CARENTAN LES MARAIS',
+  'France',
+  {
+    {id_rp_customer:'1',
+    card_num:'4974000000019467',
+    lb_card_typ:'MasterCard',
+    lb_deb_typ:'Deferred Debit',
+    dt_exp:'1997-04-20',
+    acc_num_attch:'FR76 3000 4022 4400 0055 1234 556',
+    card_state:'active'}
+  },
 
-{
-id_rp_customer:'1',
-card_num:'4974000000019467',
-lb_card_typ:'MasterCard',
-lb_deb_typ:'Deferred Debit',
-dt_exp:'1997-04-20',
-acc_num_attch:'FR76 3000 4022 4400 0055 1234 556',
-card_state:'active'
-},
+  {
+    {id_rp_customer: '1',
+    acc_num: 'FR76 3000 4022 4400 0055 1234 556',
+    lb_acc_typ: 'Compte à terme',
+    lb_currency: 'EUR',
+    balance: 62919.4},
 
-{
-{id_rp_customer: '1',
-acc_num: 'FR76 3000 4022 4400 0055 1234 556',
-lb_acc_typ: 'Compte à terme',
-lb_currency: 'EUR',
-balance: 62919.4},
+    {id_rp_customer: '1',
+    acc_num: 'FR76 3000 4022 4400 0055 1234 557',
+    lb_acc_typ: 'Compte à terme',
+    lb_currency: 'EUR',
+    balance: 52919.4}
+  },
 
-{id_rp_customer: '1',
-acc_num: 'FR76 3000 4022 4400 0055 1234 557',
-lb_acc_typ: 'Compte à terme',
-lb_currency: 'EUR',
-balance: 52919.4}
-},
-
-{
-{id_rp_customer: '1',
-cntr_num : '27594',
-lb_cntr_typ : 'ASSURANCE VIE',
-dt_effct : '2007-09-04'}
-}
+  {
+    {id_rp_customer: '1',
+    cntr_num : '27594',
+    lb_cntr_typ : 'ASSURANCE VIE',
+    dt_effct : '2007-09-04'}
+  }
 );
 
 
@@ -227,6 +225,5 @@ SELECT * from v360.tb_customer WHERE solr_query = '-{!tuple}set_cntr.lb_cntr_typ
 // Solution : 1. alter add column Set<UDT>
 //            2. spark feeds the column Set<UDT>
 //            3. alter drop the column UDT
-
 
 
