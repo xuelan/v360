@@ -1,0 +1,17 @@
+{"input":
+  {
+    "id": "1",
+    "value": "teradata",
+    "input1": {
+      "teradata": [
+        {"teradata_value": "teradata_value1"}
+      ]
+    },
+    "input2": {
+      "oracle": [
+        {"oracle_value": "teradata_value2"}
+      ]
+    }
+  },
+  "output": "to_be_defined"
+}

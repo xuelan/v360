@@ -1,6 +1,6 @@
-## Cassandra modeling
+## Cassandra cassandra.modeling
 
-2 modeling examples: how to build a 360° Customer View for retail banking.
+2 cassandra.modeling examples: how to build a 360° Customer View for retail banking.
 
 ## Search index in DSE 5.1 
 

@@ -1,6 +1,6 @@
 // A Common 360° view of customer for retail banking
 
-// Data modeling based on DSE 5.1 (Cassandra + integreted search solr)
+// Data cassandra.modeling based on DSE 5.1 (Cassandra + integreted search solr)
 // Nosql approch:
 // 1. tb_customer (with sub-collections of use defined type)
 // 2. tb_transaction

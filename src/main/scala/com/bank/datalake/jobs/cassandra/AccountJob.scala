@@ -1,12 +1,11 @@
-package com.bank.datalake.jobs
+package com.bank.datalake.jobs.cassandra
 
 import com.bank.datalake.model._
 import com.datastax.spark.connector._
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions.{collect_list, struct}
 
-
-object CardJob {
+object AccountJob {
   def start(sparkSession: SparkSession, filePath: String):Unit = {
 
     val sqlContext = sparkSession.sqlContext
@@ -19,17 +18,17 @@ object CardJob {
                               .load(filePath)
                               .groupBy("id_rp_customer")
                               .agg(collect_list(
-                                struct("id_rp_customer", "id_rp_customer", "card_num", "lb_card_typ", "lb_deb_typ", "dt_exp", "acc_num_attch", "card_state")
+                                struct("id_rp_customer", "id_rp_customer","acc_num","lb_acc_typ","lb_currency","balance")
                               ).as("Set"))
 
     val listCustomer:List[Customer] = dataSet.rdd.collect().toList.map(
       (row: Row) => {
-          val listCards:List[Card] = row.getAs[Seq[Row]](1).toList.map(
+          val listAccounts:List[Account] = row.getAs[Seq[Row]](1).toList.map(
             row2 => {
-              new Card(row2.get(1).toString,row2.get(2).toString,row2.get(3).toString,row2.get(4).toString,row2.get(5).toString, row2.get(6).toString, row2.get(7).toString)
+              new Account(row2.get(1).toString,row2.get(2).toString,row2.get(3).toString,row2.get(4).toString,row2.get(5).toString.toFloat)
             }
           )
-            Customer.applyCard(row.get(0).toString, listCards)
+            Customer.applyAccount(row.get(0).toString, listAccounts)
         }
     )
 
@@ -39,7 +38,7 @@ object CardJob {
 
     collection.saveToCassandra("v360", "tb_customer", SomeColumns(
       "id_rp_customer",
-      "set_card"
+      "set_acc"
     ))
 
     sparkSession.stop()

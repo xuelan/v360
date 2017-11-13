@@ -1,6 +1,6 @@
-package com.bank.datalake.apps
+package com.bank.datalake.apps.cassandra
 
-import com.bank.datalake.jobs.CardJob
+import com.bank.datalake.jobs.cassandra.CardJob
 import org.apache.spark.sql.SparkSession
 
 object CardApp {
@@ -14,7 +14,7 @@ object CardApp {
                                   .config("spark.serializer","org.apache.spark.serializer.KryoSerializer")
                                   .getOrCreate()
 
-    val source = getClass.getResource("/dataExample/Card.csv").toString
+    val source = getClass.getResource("/cassandra/dataExample/Card.csv").toString
 
     CardJob.start(sparkSession, source)
   }
