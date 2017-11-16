@@ -8,7 +8,7 @@ import org.apache.solr.common.SolrInputDocument
 import org.apache.spark.sql.SparkSession
 
 
-object ConfigJob {
+object ConfigJavaJob {
 
   def start(sparkSession: SparkSession, filePath: String):Unit = {
 

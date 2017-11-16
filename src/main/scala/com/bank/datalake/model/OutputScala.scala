@@ -2,15 +2,17 @@ package com.bank.datalake.model
 
 import org.apache.solr.client.solrj.beans.Field
 
+import scala.annotation.meta.field
+
 case class OutputScala(
-                        @(Field)
+                        @(Field @field)
                         id:String,
 
-                        @(Field)
-                         outputType:String,
+                        @(Field @field)
+                        outputType:String,
 
-                        @(Field)
+                        @(Field @field)
                         outputName:String,
 
-                        @(Field)
+                        @(Field @field)
                         address:String)

@@ -2,20 +2,22 @@ package com.bank.datalake.model
 
 import org.apache.solr.client.solrj.beans.Field
 
+import scala.annotation.meta.field
+
 case class ConfigScala(
 
-                        @(Field)
+                        @(Field @field)
                       id:String,
 
-                        @(Field)
+                        @(Field @field)
                       name:String,
 
-                        @(Field)
+                        @(Field @field)
                       typeEntity:String,
 
-                        @(Field)
+                        @(Field @field)
                       inputs:List[InputScala],
 
-                        @(Field)
+                        @(Field @field)
                       outputs:List[OutputScala]
                  )

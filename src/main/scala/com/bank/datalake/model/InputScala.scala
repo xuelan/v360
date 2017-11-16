@@ -2,15 +2,17 @@ package com.bank.datalake.model
 
 import org.apache.solr.client.solrj.beans.Field
 
+import scala.annotation.meta.field
+
 case class InputScala(
-                       @Field
+                       @(Field @field)
                       id:String,
 
-                       @Field
+                       @(Field @field)
                       inputType:String,
 
-                       @Field
+                       @(Field @field)
                       inputName:String,
 
-                       @Field
+                       @(Field @field)
                       address:String)
