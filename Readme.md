@@ -9,3 +9,7 @@ Example of How to create and configure Solr index.
 ## Simple spark job for loading data
 
 Examples of how to load csv data into Cassandra with some treatments 
+
+## Simple spark job for indexing Solr 7.10
+
+Examples of how to load json data into Solr with some nested documents 
