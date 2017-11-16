@@ -15,4 +15,5 @@ case class InputScala(
                       inputName:String,
 
                        @(Field @field)
-                      address:String)
+                      address:String
+                     )

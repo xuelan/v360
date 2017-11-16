@@ -5,19 +5,18 @@ import org.apache.solr.client.solrj.beans.Field
 import scala.annotation.meta.field
 
 case class ConfigScala(
+                        @(Field @field)
+                        id:String,
 
                         @(Field @field)
-                      id:String,
+                        name:String,
 
                         @(Field @field)
-                      name:String,
+                        typeEntity:String,
 
                         @(Field @field)
-                      typeEntity:String,
+                        inputs:List[InputScala],
 
                         @(Field @field)
-                      inputs:List[InputScala],
-
-                        @(Field @field)
-                      outputs:List[OutputScala]
+                        outputs:List[OutputScala]
                  )

@@ -15,4 +15,5 @@ case class OutputScala(
                         outputName:String,
 
                         @(Field @field)
-                        address:String)
+                        address:String
+                      )

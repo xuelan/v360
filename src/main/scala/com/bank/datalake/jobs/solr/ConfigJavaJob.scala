@@ -26,35 +26,28 @@ object ConfigJavaJob {
 
     configs.map(
       config => {
-
         val doc = new SolrInputDocument()
-
         doc.addField("id", config.id)
         doc.addField("name", config.name)
         doc.addField("typeEntity", config.typeEntity)
 
         config.inputs.map(
           input => {
-
             val inputDoc = new SolrInputDocument()
-
             inputDoc.addField("id", input.id)
             inputDoc.addField("inputType", input.inputType)
             inputDoc.addField("inputName", input.inputName)
             inputDoc.addField("address", input.address)
-
             doc.addChildDocument(inputDoc)
         })
 
         config.outputs.map(
           output => {
             val outputDoc = new SolrInputDocument()
-
             outputDoc.addField("id", output.id)
             outputDoc.addField("outputType", output   .outputType)
             outputDoc.addField("outputName", output.outputName)
             outputDoc.addField("address", output.address)
-
             doc.addChildDocument(outputDoc)
           }
         )
