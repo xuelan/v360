@@ -79,20 +79,40 @@
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_${scala.version.short}</artifactId>
       <version>${spark.version}</version>
+
+        <exclusions>
+            <exclusion>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>*</artifactId>
+            </exclusion>
+        </exclusions>
     </dependency>
 
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-sql_${scala.version.short}</artifactId>
       <version>${spark.version}</version>
+
+        <exclusions>
+            <exclusion>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>*</artifactId>
+            </exclusion>
+        </exclusions>
     </dependency>
 
     <dependency>
       <groupId>com.lucidworks.spark</groupId>
       <artifactId>spark-solr</artifactId>
       <version>${spark.lucidworks.version}</version>
-    </dependency>
 
+        <exclusions>
+            <exclusion>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>*</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
 
   </dependencies>
 
