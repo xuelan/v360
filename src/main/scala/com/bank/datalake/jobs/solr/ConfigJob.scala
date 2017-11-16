@@ -22,18 +22,16 @@ object ConfigJob {
 
     val configs:List[ConfigScala] = configRdd.collect.toList
 
-
     val docs = new util.ArrayList[SolrInputDocument]
-
-
 
     configs.map(
       config => {
 
         val doc = new SolrInputDocument()
 
-        val inputsList = new util.ArrayList[SolrInputDocument]
-        //val docInputs = new SolrInputDocument()
+        doc.addField("id", config.id)
+        doc.addField("name", config.name)
+        doc.addField("typeEntity", config.typeEntity)
 
         config.inputs.map(
           input => {
@@ -45,45 +43,21 @@ object ConfigJob {
             inputDoc.addField("inputName", input.inputName)
             inputDoc.addField("address", input.address)
 
-            inputsList.add(inputDoc)
-            //docInputs.addChildDocument(inputDoc)
+            doc.addChildDocument(inputDoc)
         })
-
-        //doc.addChildDocuments(inputsList)
-       // doc.addField("inputs", docInputs)
-
-
-        val outputsList = new util.ArrayList[SolrInputDocument]
-
-       // val docOutputs = new SolrInputDocument()
 
         config.outputs.map(
           output => {
             val outputDoc = new SolrInputDocument()
 
             outputDoc.addField("id", output.id)
-            outputDoc.addField("outputType", output.outputType)
+            outputDoc.addField("outputType", output   .outputType)
             outputDoc.addField("outputName", output.outputName)
             outputDoc.addField("address", output.address)
 
-            //doc.addChildDocument(outputDoc)
-            outputsList.add(outputDoc)
+            doc.addChildDocument(outputDoc)
           }
         )
-
-
-        doc.addField("id", config.id)
-        doc.addField("name", config.name)
-        doc.addField("typeEntity", config.typeEntity)
-
-//        val childrensInputs = new SolrInputDocument()
-//        childrensInputs.addChildDocuments(inputsList)
-        doc.addField("inputs", inputsList)
-
-//        val childrensOutputs = new SolrInputDocument()
-//        childrensOutputs.addChildDocuments(outputsList)
-        doc.addField("outputs", outputsList)
-
 
         docs.add(doc)
       }

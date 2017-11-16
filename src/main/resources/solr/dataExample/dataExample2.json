@@ -6,13 +6,13 @@
     [
       {
         "id": "123",
-        "inputType": "test",
+        "inputType": "file",
         "inputName": "transaction.csv",
         "address": "//s34434:1111/transaction/"
       },
       {
         "id": "1234",
-        "inputType" : "test",
+        "inputType" : "file",
         "inputName": "customer.csv",
         "address": "//s34434:2222/customer/"
       }
@@ -21,13 +21,13 @@
     [
       {
         "id": "1235",
-        "outputType": "data base",
+        "outputType": "data_base",
         "outputName": "teradata1",
         "address": "//s5524:3333"
       },
       {
         "id": "1236",
-        "outputType" : "data base",
+        "outputType" : "data_base",
         "outputName": "oracle1",
         "address": "//s5523:4444"
       }

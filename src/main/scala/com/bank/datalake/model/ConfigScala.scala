@@ -1,3 +1,21 @@
 package com.bank.datalake.model
 
-case class ConfigScala(id:String, name:String, typeEntity:String, inputs:List[InputScala], outputs:List[OutputScala])
+import org.apache.solr.client.solrj.beans.Field
+
+case class ConfigScala(
+
+                        @(Field)
+                      id:String,
+
+                        @(Field)
+                      name:String,
+
+                        @(Field)
+                      typeEntity:String,
+
+                        @(Field)
+                      inputs:List[InputScala],
+
+                        @(Field)
+                      outputs:List[OutputScala]
+                 )
