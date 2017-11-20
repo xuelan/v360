@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+###################### Docker  ######################
+
+# rm all exited containers
+sudo docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm
+
+# stop all containers
+docker stop $(docker ps -aq)
+
+# rm all containers
+docker rm $(docker ps -aq)
+
+# rm all images
+docker rmi $(docker images -q)
+
+###################### Zookeeper ######################
+
 # Run zk
 docker run --name some-zookeeper --restart always -d zookeeper
 
@@ -50,12 +66,19 @@ docker run -d --name schema-registry -p 8081:8081 --link zookeeper:zookeeper \
 # Start REST Proxy and expose port 8082 for use by the host machine
 docker run -d --name rest-proxy -p 8082:8082 --link zookeeper:zookeeper \
     --link kafka:kafka --link schema-registry:schema-registry confluent/rest-proxy
-If you're using boot2docker, you'll need to adjust how you run Kafka:
 
-# Get the IP address of the docker machine
-DOCKER_MACHINE=`boot2docker ip`
 
-# Start Kafka and expose port 9092 for use by the host machine
-# Also configure the broker to use the docker machine's IP address
-docker run -d --name kafka -p 9092:9092 --link zookeeper:zookeeper \
-    --env KAFKA_ADVERTISED_HOST_NAME=$DOCKER_MACHINE confluent/kafka
+
+
+###################### DSE 5.1.5 ######################
+
+# dse search
+docker run --name dse-search -d -p 9042:9042 luketillman/datastax-enterprise:5.1.5 -s
+
+docker exec -it dse-search dsetool status
+
+
+
+
+
+
