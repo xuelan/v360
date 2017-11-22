@@ -1,4 +1,4 @@
-package com.bank.datalake.jobs.cassandra
+package com.bank.datalake.spark.jobs.cassandra
 
 import com.bank.datalake.model._
 import com.datastax.spark.connector._

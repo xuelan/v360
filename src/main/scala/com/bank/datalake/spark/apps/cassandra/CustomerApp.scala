@@ -1,6 +1,6 @@
-package com.bank.datalake.apps.cassandra
+package com.bank.datalake.spark.apps.cassandra
 
-import com.bank.datalake.jobs.cassandra.CustomerJob
+import com.bank.datalake.spark.jobs.cassandra.CustomerJob
 import org.apache.spark.sql.SparkSession
 
 object CustomerApp {

@@ -1,5 +1,3 @@
-
-
 drop keyspace test_keyspace;
 
 create keyspace test_keyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
@@ -25,4 +23,9 @@ insert into test_keyspace.test_table
 (id, value) values ('1','test')
 ;
 
-select * from test_keyspace.test_table;
+insert into test_keyspace.test_table
+(id, value) values ('2','test-2')
+;
+
+
+SELECT * from test_keyspace.test_table WHERE solr_query = '{"q":"id:*2*"}';

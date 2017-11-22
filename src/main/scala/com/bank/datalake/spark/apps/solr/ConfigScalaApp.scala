@@ -1,6 +1,6 @@
-package com.bank.datalake.apps.solr
+package com.bank.datalake.spark.apps.solr
 
-import com.bank.datalake.jobs.solr.ConfigScalaJob
+import com.bank.datalake.spark.jobs.solr.ConfigScalaJob
 import org.apache.spark.sql.SparkSession
 
 object ConfigScalaApp {

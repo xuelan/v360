@@ -1,4 +1,4 @@
-package com.bank.datalake.jobs.solr
+package com.bank.datalake.spark.jobs.solr
 
 import com.bank.datalake.model._
 import org.apache.solr.client.solrj.impl.HttpSolrClient

@@ -70,12 +70,23 @@ docker run -d --name rest-proxy -p 8082:8082 --link zookeeper:zookeeper \
 
 
 
-###################### DSE 5.1.5 ######################
+###################### DSE 5.1.5  cluster : dse-search ######################
+#https://github.com/LukeTillman/dse-docker#datastax-enterprise-docker
 
-# dse search
-docker run --name dse-search -d -p 9042:9042 luketillman/datastax-enterprise:5.1.5 -s
+# start DSE in Cassandra only mode
+docker run --name dse-search -d -p 9042:9042 luketillman/datastax-enterprise:5.1.5
 
+# start dse with Graph Node
+docker run --name dse-search -d luketillman/datastax-enterprise:TAG -g
+
+# start dse with Search Node
+docker run --name dse-search -d -p 9042:9042 -p 8983:8983 luketillman/datastax-enterprise:5.1.5 -s
+
+# Check cluster status
 docker exec -it dse-search dsetool status
+
+# luanch cqlsh
+docker exec -it dse-search cqlsh
 
 
 

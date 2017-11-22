@@ -13,3 +13,11 @@ Examples of how to load csv data into Cassandra with some treatments
 ## Simple spark job for indexing Solr 7.10
 
 Examples of how to load json data into Solr with some nested documents 
+
+## Simple SparkStreaming for pushing transactions to Kafka
+
+Examples of SparkStreaming
+
+## Simple KafkaStream for loading data to Cassandra
+
+Examples of KafkaStream
