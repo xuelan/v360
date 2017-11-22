@@ -28,7 +28,6 @@
       <id>confluent</id>
       <url>http://packages.confluent.io/maven/</url>
     </repository>
-
   </repositories>
 
   <pluginRepositories>
@@ -175,9 +174,22 @@
           <groupId>com.101tec</groupId>
           <artifactId>*</artifactId>
         </exclusion>
-
       </exclusions>
+
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-streams</artifactId>
+      <version>${kafka.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>${kafka.version}</version>
+    </dependency>
+
 
     <!-- https://mvnrepository.com/artifact/com.sksamuel.avro4s/avro4s-core -->
     <dependency>

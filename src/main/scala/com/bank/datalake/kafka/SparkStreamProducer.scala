@@ -12,12 +12,11 @@ object SpStreamingWritingKafka extends App {
 
   val eventsPerSecond = 10
   private val broker = "localhost:9092"
-  private val SCHEMA_URL = "http://localhost:8081"
+  private val SCHEMA_URL = "http://0.0.0.0:8081"
   private val topic = "transaction"
 
   val props = new Properties()
   props.put("bootstrap.servers", broker)
-  props.put("compression.type", "snappy")
   props.put("message.send.max.retries", "5")
   props.put("acks", "1")
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")

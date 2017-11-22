@@ -82,6 +82,15 @@ create table v360.tb_customer(
 //tb_transaction..... TODO with bucket(slice of month...)
 // ((id_rp_customer, bucket), id_trnsc)  + index of rs_comm
 
+create table v360.transaction (
+  id_rp_customer text,
+  id_trnsc text,
+  timestamp_trnsc text,
+  lb_trnsc_typ text,
+  amount float,
+  primary key (id_rp_customer)
+);
+
 
 /////////////////////////////////////////   INDEX   ///////////////////////////////////////////
 
