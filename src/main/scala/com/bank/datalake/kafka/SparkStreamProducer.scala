@@ -1,12 +1,11 @@
 package com.bank.datalake.kafka
 
-import java.util.{HashMap, Properties}
+import java.util.Properties
 
 import com.bank.datalake.util.AvroUtils
 import org.apache.avro.generic.GenericRecord
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object SpStreamingWritingKafka extends App {
@@ -17,7 +16,7 @@ object SpStreamingWritingKafka extends App {
   private val topic = "transaction"
 
   val props = new Properties()
-  props.put("bootstrap-server", broker)
+  props.put("bootstrap.servers", broker)
   props.put("compression.type", "snappy")
   props.put("message.send.max.retries", "5")
   props.put("acks", "1")
@@ -44,8 +43,7 @@ object SpStreamingWritingKafka extends App {
       partition.map( data =>{
         val record = AvroUtils.getGenericRecord(data)
         record
-      })
-        .foreach( record => {
+      }).foreach( record => {
           val producer: KafkaProducer[String, GenericRecord] = new KafkaProducer[String, GenericRecord](props)
 
           val recordProducer = new ProducerRecord[String, GenericRecord](topic, record)

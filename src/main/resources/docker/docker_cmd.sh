@@ -69,7 +69,6 @@ docker run -d --name rest-proxy -p 8082:8082 --link zookeeper:zookeeper \
 
 
 
-
 ###################### DSE 5.1.5  cluster : dse-search ######################
 #https://github.com/LukeTillman/dse-docker#datastax-enterprise-docker
 

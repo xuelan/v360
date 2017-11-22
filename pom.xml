@@ -14,6 +14,7 @@
     <com.datastax.spark.version>2.0.5</com.datastax.spark.version>
     <spark.lucidworks.version>3.3.1</spark.lucidworks.version>
     <kafka-avro-serializer.version>3.2.0</kafka-avro-serializer.version>
+    <avro.version>1.8.2</avro.version>
   </properties>
 
   <repositories>
@@ -22,6 +23,12 @@
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>
     </repository>
+
+    <repository>
+      <id>confluent</id>
+      <url>http://packages.confluent.io/maven/</url>
+    </repository>
+
   </repositories>
 
   <pluginRepositories>
@@ -88,6 +95,11 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>*</artifactId>
             </exclusion>
+
+          <exclusion>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
         </exclusions>
     </dependency>
 
@@ -142,12 +154,28 @@
         </exclusion>
         <exclusion>
           <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-log4j12</artifactId>
+          <artifactId>*</artifactId>
         </exclusion>
         <exclusion>
           <groupId>log4j</groupId>
           <artifactId>log4j</artifactId>
         </exclusion>
+
+        <exclusion>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+
+        <exclusion>
+          <groupId>com.101tec</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+
       </exclusions>
     </dependency>
 
@@ -156,6 +184,25 @@
       <groupId>com.sksamuel.avro4s</groupId>
       <artifactId>avro4s-core_2.11</artifactId>
       <version>1.8.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>${avro.version}</version>
+
+      <exclusions>
+        <exclusion>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
 
