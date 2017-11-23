@@ -1,6 +1,6 @@
 drop keyspace test_keyspace;
 
-create keyspace v360 WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+create keyspace test_keyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
 drop table test_keyspace.test_table;
 
