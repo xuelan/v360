@@ -12,7 +12,7 @@ object SpStreamingWritingKafka extends App {
 
   val eventsPerSecond = 10
   private val broker = "localhost:9092"
-  private val SCHEMA_URL = "http://0.0.0.0:8081"
+//  private val SCHEMA_URL = "http://localhost:8081"
   private val topic = "transaction"
 
   val props = new Properties()
@@ -20,9 +20,9 @@ object SpStreamingWritingKafka extends App {
   props.put("message.send.max.retries", "5")
   props.put("acks", "1")
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-  props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
+  props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
-  props.put("schema.registry.url" ,  SCHEMA_URL)
+//  props.put("schema.registry.url" ,  SCHEMA_URL)
   props.put("schema.compatibility" ,  "FULL")
 
   val conf = new SparkConf()
@@ -40,12 +40,12 @@ object SpStreamingWritingKafka extends App {
 
     rdd.foreachPartition( partition =>{
       partition.map( data =>{
-        val record = AvroUtils.getGenericRecord(data)
+        val record = data
         record
       }).foreach( record => {
-          val producer: KafkaProducer[String, GenericRecord] = new KafkaProducer[String, GenericRecord](props)
+          val producer: KafkaProducer[String, String] = new KafkaProducer[String, String](props)
 
-          val recordProducer = new ProducerRecord[String, GenericRecord](topic, record)
+          val recordProducer = new ProducerRecord[String, String](topic, record.toString)
 
           println(s"Send recordProducer ===> ${recordProducer}")
           producer.send(recordProducer)

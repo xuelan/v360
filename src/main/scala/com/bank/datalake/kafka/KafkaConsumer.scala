@@ -7,7 +7,7 @@ import org.apache.avro.generic.GenericRecord
 import org.apache.kafka.clients.consumer.{ConsumerRecords, KafkaConsumer}
 
 object KafkaConsumer extends App {
-  private val broker = "0.0.0.0:9092"
+  private val broker = "localhost:9092"
   //  private val SCHEMA_URL = "http://localhost:8081"
   private val topic = "transaction"
 
@@ -16,10 +16,11 @@ object KafkaConsumer extends App {
   props.put("bootstrap.servers", broker)
   props.put("enable.auto.commit", "true")
   props.put("auto.commit.interval.ms", "1000")
+  props.put("group.id", "test-consumer-group")
   props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
   props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
 
-  val consumerKafka = new KafkaConsumer[String, GenericRecord](props)
+  val consumerKafka = new KafkaConsumer[String, String](props)
 
   consumerKafka.subscribe(Collections.singletonList(this.topic))
 
@@ -27,7 +28,7 @@ object KafkaConsumer extends App {
     new Runnable {
       override def run(): Unit = {
         while (true) {
-          val records: ConsumerRecords[String, GenericRecord] = consumerKafka.poll(Long.MaxValue)
+          val records: ConsumerRecords[String, String] = consumerKafka.poll(Long.MaxValue)
 
           val recordIterator = records.iterator()
 
